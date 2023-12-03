@@ -148,6 +148,5 @@ public class Main {
         System.out.println("max 2:" + positionMAX(arr,2));
         System.out.println("max 3:" + positionMAX(arr,3));
         OutputPrime(arr);
-
     }
 }
