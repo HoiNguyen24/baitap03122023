@@ -1,4 +1,7 @@
 import java.lang.String;
+import java.util.Arrays;
+
+import static java.util.Collections.copy;
 
 public class Main {
     public static void Max(int[] arr){
@@ -96,7 +99,7 @@ public class Main {
     }
     public static int sum(int n){
         int sum = 0;
-        while(n/10 > 0){
+        while(n > 0){
             sum += n%10;
             n /= 10;
         }
@@ -121,7 +124,25 @@ public class Main {
      }
      public static int positionMAX(int[] arr,int k){
         quicksort(arr,0,arr.length-1);
-        return arr[arr.length - k];
+        int[] index = new int[arr.length];
+        for(int i = 0; i < arr.length;i++){
+            if(index[i] == 0)
+               for(int j = i+1 ; j < arr.length;j++){
+                   if(arr[i] == arr[j]){
+                       index[i] = 1;
+                       index[j] = 2;
+                   }
+               }
+         }
+         int[] newarr = new int[arr.length];
+        int count = 0;
+        for(int i = 0 ; i < arr.length;i++){
+            if(index[i] == 1 || index[i] == 0){
+                newarr[count] = arr[i];
+                count++;
+            }
+        }
+        return newarr[newarr.length-k-count];
      }
      public static void quicksort(int[] arr,int l,int r){
         if( l < r )
@@ -144,9 +165,7 @@ public class Main {
              arr) {
             System.out.print(i+",");
         }
-        System.out.println("max 1:" + positionMAX(arr,1));
-        System.out.println("max 2:" + positionMAX(arr,2));
-        System.out.println("max 3:" + positionMAX(arr,3));
-        OutputPrime(arr);
+        System.out.println("so lon nhat: "+positionMAX(arr,4));;
+        System.out.println(sum(4326));
     }
 }
